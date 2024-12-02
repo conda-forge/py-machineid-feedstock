@@ -10,18 +10,19 @@ source:
   sha256: 00c38d8521d429a4539bdd92967234db28a1a2b4b263062b351ca002332e633f
 
 build:
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools
     - wheel
   run:
-    - python
-    - winregistry  # [win]
+    - python >={{ python_min }}
+    - winregistry >=2.0.1,<3
 
 test:
   imports:
@@ -29,6 +30,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
