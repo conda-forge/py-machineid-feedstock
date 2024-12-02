@@ -16,13 +16,13 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools
     - wheel
   run:
-    - python
-    - winregistry  # [win]
+    - python >={{ python_min }}
+    - winregistry
 
 test:
   imports:
@@ -30,6 +30,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
