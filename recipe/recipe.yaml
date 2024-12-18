@@ -1,0 +1,49 @@
+context:
+  name: py-machineid
+  version: 0.7.0
+  python_min: 3.9
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 5a74a810e38b57b043b145c756c1e6ac161529cb7d83fe20099fcb986acc577b
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python >=${{ python_min }}
+    - winregistry >=2.0.1,<3
+
+tests:
+  - python:
+      imports:
+        - machineid
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pip
+    script:
+      - pip check
+
+about:
+  summary: Get the unique machine ID of any host (without admin privileges)
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/keygen-sh/py-machineid
+
+extra:
+  recipe-maintainers:
+    - sbtq
+    - cedrictq
