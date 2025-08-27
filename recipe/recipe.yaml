@@ -1,7 +1,7 @@
 context:
   name: py-machineid
-  version: 0.7.0
-  python_min: 3.9
+  version: "0.8.0"
+  python_min: '3.9'
 
 package:
   name: ${{ name|lower }}
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 5a74a810e38b57b043b145c756c1e6ac161529cb7d83fe20099fcb986acc577b
+  sha256: 5515d5f9779073d0caa2e8aaf15a0fdd0ad4247fd0b86d9c447431c96d3e3467
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
