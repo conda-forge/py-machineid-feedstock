@@ -1,6 +1,6 @@
 context:
   name: py-machineid
-  version: "0.8.1"
+  version: "1.0.0"
   python_min: '3.10'
 
 package:
@@ -8,8 +8,8 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: e50416221235c874759e19cb64e8499def12afc2bdffd377bfd68f477f799dc8
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 8a902a00fae8c6d6433f463697c21dc4ce98c6e55a2e0535c0273319acb0047a
 
 build:
   number: 0
